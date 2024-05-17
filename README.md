@@ -1,6 +1,6 @@
 # Color-War
 
-![Capture d'écran du jeu Filler](images/Filler-on-GamePigeon.jpg)
+![Capture d'écran du jeu Filler](assets/Filler-on-GamePigeon.jpg)
 
 ### À propos
 
