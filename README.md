@@ -1,5 +1,7 @@
 # Color-War
 
+![Capture d'écran du jeu Filler](images/Filler-on-GamePigeon.jpg)
+
 ### À propos
 
 Ce dépôt contient une implémentation du jeu Filler en langage C. Le projet présente une IA inspirée de l'application Game Pigeon disponible sur iOS.
