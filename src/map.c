@@ -1,29 +1,15 @@
-// map.c
 #include "my.h"
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 
-
-
-// Fonction pour afficher la carte avec les couleurs
-void print_map(char *map)
+void print_grid(char* map, Cell* grid, sfRenderWindow *window)
 {
     char *colors_code[] = COLORS_CODE; // Tableau de codes de couleur
-    for (int y = 0 ; y < MAP_HEIGHT ; y++) // Parcours des lignes de la carte
+    for (int y = 0 ; y < MAP_HEIGHT ; y++) // Parcours des lignes de la map
     {
-        for (int x = 0 ; x < MAP_WIDTH ; x++) // Parcours des colonnes de la carte
-            printf("%s  %s", colors_code[map[y * MAP_WIDTH + x]], COLOR_RESET); // Affichage de la couleur de chaque case
-        printf("\n"); // Nouvelle ligne pour chaque ligne de la carte
-    }
-}
-
-void print_mapu(char* map, Cell* grid, sfRenderWindow *window)
-{
-    char *colors_code[] = COLORS_CODE; // Tableau de codes de couleur
-    for (int y = 0 ; y < MAP_HEIGHT ; y++) // Parcours des lignes de la carte
-    {
-        for (int x = 0 ; x < MAP_WIDTH ; x++){ // Parcours des colonnes de la carte
+        for (int x = 0 ; x < MAP_WIDTH ; x++){ // Parcours des colonnes de la map
+            //Remplissage des cellules de la grille
             int couleur = map[y * MAP_WIDTH + x];
             if (colors_code[couleur] == "\e[40m") sfRectangleShape_setFillColor(grid[y* GRID_SIZE + x].shape, sfBlack);
             if (colors_code[couleur] == "\e[43m") sfRectangleShape_setFillColor(grid[y* GRID_SIZE + x].shape, sfYellow);
@@ -33,15 +19,15 @@ void print_mapu(char* map, Cell* grid, sfRenderWindow *window)
             if (colors_code[couleur] == "\e[105m") sfRectangleShape_setFillColor(grid[y* GRID_SIZE + x].shape, sfMagenta);
         }
     }
+    //Affichage de la grille
     for (int i = 0; i < GRID_SIZE * GRID_SIZE; ++i) sfRenderWindow_drawRectangleShape(window, grid[i].shape, NULL);
-
 }
 
-// Fonction pour générer une carte aléatoire
+// Fonction pour générer une map aléatoire
 void random_map(char *map)
 {
     srand(time(NULL)); // Initialisation de la graine pour la génération aléatoire
-    for (int i = 0 ; i < (MAP_HEIGHT * MAP_WIDTH) ; i++) // Parcours de toutes les cases de la carte
+    for (int i = 0 ; i < (MAP_HEIGHT * MAP_WIDTH) ; i++) // Parcours de toutes les cases de la map
     {
         while (TRUE) // Boucle infinie
         {
@@ -59,47 +45,51 @@ void random_map(char *map)
 
 
 
-// Fonction pour générer une carte aléatoire
+// Fonction pour générer une map aléatoire
 char *generate_random_map()
 {
-    char *map;
+    char *map; //Déclaration de la map
 
-    map = malloc(sizeof(char) * MAP_HEIGHT * MAP_WIDTH); // Allocation de mémoire pour la carte
-    random_map(map); // Génération de la carte aléatoire
-    return map; // Retourne la carte générée
+    map = malloc(sizeof(char) * MAP_HEIGHT * MAP_WIDTH); // Allocation de mémoire pour la map
+    random_map(map); // Génération de la map aléatoire
+    return map; // Renvoie la map générée
 }
 
-// Fonction pour générer une carte vide
+// Fonction pour générer une map vide
 char *generate_empty_map()
 {
     char *map;
-    map = malloc(sizeof(char) * MAP_HEIGHT * MAP_WIDTH); // Allocation de mémoire pour la carte
-    for (int i = 0 ; i < (MAP_HEIGHT * MAP_WIDTH) ; i++) // Parcours de toutes les cases de la carte
+    map = malloc(sizeof(char) * MAP_HEIGHT * MAP_WIDTH); // Allocation de mémoire pour la map
+    for (int i = 0 ; i < (MAP_HEIGHT * MAP_WIDTH) ; i++) // Parcours de toutes les cases de la map
         map[i] = 0; // Initialisation de toutes les cases à zéro
-    return map; // Retourne la carte vide
+    return map; // Retourne la map vide
 }
 
-// Fonction pour copier une carte
+// Fonction pour copier une map
 char *copy_map(char *map)
 {
-    char *new_map;
-
-    new_map = malloc(sizeof(char) * MAP_HEIGHT * MAP_WIDTH); // Allocation de mémoire pour la nouvelle carte
-    for (int i = 0 ; i < (MAP_HEIGHT * MAP_WIDTH) ; i++) // Parcours de toutes les cases de la carte
-        new_map[i] = map[i]; // Copie de chaque case de la carte originale vers la nouvelle carte
-    return new_map; // Retourne la nouvelle carte copiée
+    char *new_map; //Déclaration de la nouvelle map
+    new_map = malloc(sizeof(char) * MAP_HEIGHT * MAP_WIDTH); // Allocation de mémoire pour la nouvelle map
+    for (int i = 0 ; i < (MAP_HEIGHT * MAP_WIDTH) ; i++) // Parcours de toutes les cases de la map
+        new_map[i] = map[i]; // Copie de chaque case de la map originale vers la nouvelle map
+    return new_map; // Renvoie la nouvelle map
 }
 
-Cell* creer_grille(){
-  Cell* g = malloc(GRID_SIZE * GRID_SIZE * sizeof(Cell));
-  for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++){
-    g[i].shape = sfRectangleShape_create();
-    sfVector2f size = {CELL_SIZE, CELL_SIZE};
-    sfRectangleShape_setSize(g[i].shape, size);
-    sfVector2f position = {(i % GRID_SIZE) * CELL_SIZE, (i / GRID_SIZE) * CELL_SIZE};
-    sfRectangleShape_setPosition(g[i].shape, position);
-    g[i].color = sfCyan;
-    sfRectangleShape_setFillColor(g[i].shape, g[i].color);
-  }
-  return g;
+
+//Renvoie une nouvelle grille de jeu
+Cell* creer_grille(sfVector2f position) {
+    Cell* g = malloc(GRID_SIZE * GRID_SIZE * sizeof(Cell)); //Allocation de la mémoire pour la grille
+    for (int i = 0; i < GRID_SIZE * GRID_SIZE; i++) { //Parcours de la grille
+        g[i].shape = sfRectangleShape_create(); //Chaque cellule est un rectangle
+        sfVector2f size = {CELL_SIZE, CELL_SIZE}; //On définit leur taille de sorte à les rendre carrées
+        sfRectangleShape_setSize(g[i].shape, size);
+        sfVector2f cellPosition = { //On place les cases en fonction de la taille de la grille
+            position.x + (i % GRID_SIZE) * CELL_SIZE,
+            (position.y)/2 + (i / GRID_SIZE) * CELL_SIZE
+        };
+        sfRectangleShape_setPosition(g[i].shape, cellPosition);
+        g[i].color = sfCyan; //Pour les cases non initialisées (si tout se passe bien aucune case ne sera de couleur cyan)
+        sfRectangleShape_setFillColor(g[i].shape, g[i].color);
+    }
+    return g; //Renvoie la grille
 }
