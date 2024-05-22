@@ -4,8 +4,7 @@ SRCS = 	src/ai.c \
 		src/game.c \
 		src/main.c \
 		src/map.c \
-		src/print.c \
-		src/utils.c
+		src/print.c 
 
 CFLAGS = -Iinclude -O3
 
