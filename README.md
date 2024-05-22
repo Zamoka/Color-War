@@ -9,11 +9,11 @@ sudo apt install libcsfml-*
 
 ### À propos
 
-Ce dépôt contient une implémentation du jeu Filler en langage C. Le projet présente une IA inspirée de l'application Game Pigeon disponible sur iOS.
+Ce dépôt contient une implémentation du jeu Color War en langage C. Le projet présente une IA pour tester les capacités de reflexion du joueur.
 
-### Qu'est-ce que Filler ?
+### Qu'est-ce que Color War ?
 
-Filler est un jeu stratégique où deux joueurs prennent à tour de rôle des cellules sur une grille. Le but est de contrôler le plus grand nombre de cellules à la fin du jeu. Chaque joueur commence à une position prédéfinie sur la grille et peut étendre son territoire en revendiquant les cellules adjacentes d'une certaine couleur.
+Color War est un jeu stratégique où deux joueurs prennent à tour de rôle des cellules sur une grille. Le but est de contrôler le plus grand nombre de cellules à la fin du jeu. Chaque joueur commence à une position prédéfinie sur la grille et peut étendre son territoire en revendiquant les cellules adjacentes d'une certaine couleur.
 
 ### Fonctionnalités
 
@@ -22,4 +22,4 @@ Filler est un jeu stratégique où deux joueurs prennent à tour de rôle des ce
 
 ### Inspiration
 
-Ce projet est inspiré par l'application Game Pigeon sur iOS, qui inclut une variété de mini-jeux, dont Filler. L'objectif était de recréer le plaisir et le défi du jeu original tout en implémentant un adversaire IA capable de rivaliser avec les joueurs humains.
+Ce projet est inspiré par l'application Game Pigeon sur iOS, qui inclut une variété de mini-jeux, dont Color War. L'objectif était de recréer le plaisir et le défi du jeu original tout en implémentant un adversaire IA capable de rivaliser avec les joueurs humains.
