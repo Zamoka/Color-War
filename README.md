@@ -2,10 +2,14 @@
 
 ![Capture d'écran du jeu Filler](assets/Filler-on-GamePigeon.jpg)
 
-### Installation requise : 
+### Installation requise 
 
 Le code nécessite la bibliothèque csfml. Ainsi, dans le terminal Linux/Ubuntu, utilisez cette commande :
 sudo apt install libcsfml-*
+
+### Lancer le jeu
+
+Après l'installation de CSFML et le téléchargement du dossier du jeu, allez dans le dossier correspondant, tapez `make`, puis lancez le jeu en tapant `./try_to_beat_me`.
 
 ### À propos
 
