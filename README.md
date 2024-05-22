@@ -22,4 +22,4 @@ Color War est un jeu stratégique où deux joueurs prennent à tour de rôle des
 
 ### Inspiration
 
-Ce projet est inspiré par l'application Game Pigeon sur iOS, qui inclut une variété de mini-jeux, dont Color War. L'objectif était de recréer le plaisir et le défi du jeu original tout en implémentant un adversaire IA capable de rivaliser avec les joueurs humains.
+Ce projet est inspiré par diverse application qui inclut une variété de mini-jeux, dont Color War. L'objectif était de recréer le plaisir et le défi du jeu original tout en implémentant un adversaire IA capable de rivaliser avec les joueurs humains.
