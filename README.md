@@ -2,6 +2,11 @@
 
 ![Capture d'écran du jeu Filler](assets/Filler-on-GamePigeon.jpg)
 
+### Installation requise : 
+
+Le code nécessite la bibliothèque csfml. Ainsi, dans le terminal Linux/Ubuntu, utilisez cette commande :
+sudo apt install libcsfml-*
+
 ### À propos
 
 Ce dépôt contient une implémentation du jeu Filler en langage C. Le projet présente une IA inspirée de l'application Game Pigeon disponible sur iOS.
