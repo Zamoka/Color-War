@@ -9,7 +9,7 @@ sudo apt install libcsfml-*
 
 ### Lancer le jeu
 
-Après l'installation de CSFML et le téléchargement du dossier du jeu, allez dans le dossier correspondant, tapez `make`, puis lancez le jeu en tapant `./try_to_beat_me`.
+Après l'installation de CSFML et le téléchargement du dossier du jeu, allez dans le dossier correspondant, tapez `make`, puis lancez le jeu en tapant `./play`.
 
 ### À propos
 
