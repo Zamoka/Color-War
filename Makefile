@@ -1,4 +1,4 @@
-NAME = try_to_beat_me
+NAME = play
 
 SRCS = 	src/ai.c \
 		src/game.c \
